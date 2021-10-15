@@ -27,6 +27,7 @@
         <activity
             android:name=".ui.form.ProductFormActivity"
             android:label="@string/product_form_title" />
+        <activity android:name=".ui.detail.ProductDetailActivity"/>
     </application>
 
 </manifest>

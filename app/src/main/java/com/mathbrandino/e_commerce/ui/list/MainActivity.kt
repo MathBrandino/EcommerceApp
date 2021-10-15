@@ -1,11 +1,15 @@
 package com.mathbrandino.e_commerce.ui.list
 
+import android.app.ActivityOptions
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.mathbrandino.e_commerce.data.local.product.Product
 import com.mathbrandino.e_commerce.databinding.ActivityMainBinding
+import com.mathbrandino.e_commerce.ui.detail.ProductDetailActivity
 import com.mathbrandino.e_commerce.ui.form.ProductFormActivity
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -27,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         viewModel.products.observe(this) {
-            binding.productList.adapter = ProductAdapter(it)
+            binding.productList.adapter = ProductAdapter(it, this::clickListCallback)
         }
 
         binding.productList.addOnScrollListener(object : RecyclerView.OnScrollListener() {
@@ -41,5 +45,16 @@ class MainActivity : AppCompatActivity() {
                 if (newState == RecyclerView.SCROLL_STATE_IDLE) binding.fabAddProduct.show()
             }
         })
+    }
+
+    private fun clickListCallback(product: Product, view: View) {
+
+        val makeSceneTransitionAnimation = ActivityOptions
+            .makeSceneTransitionAnimation(this, view, "productImage")
+
+        val intent = Intent(this, ProductDetailActivity::class.java)
+        intent.putExtra(ProductDetailActivity.PRODUCT_EXTRA, product)
+
+        startActivity(intent, makeSceneTransitionAnimation.toBundle())
     }
 }

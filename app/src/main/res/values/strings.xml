@@ -18,4 +18,9 @@
     <string name="product_form_menu_name_error">Nome não pode ser vazio</string>
     <string name="product_form_menu_value_error">Valor não pode ser vazio</string>
 
+    <string name="product_detail_description_title">Descrição do Produto</string>
+    <string name="product_detail_value_title">Valor unitário</string>
+    <string name="product_detail_value">R$ %1$.2f</string>
+    <string name="product_detail_button_text">Adicionar no carrinho</string>
+
 </resources>

@@ -23,6 +23,10 @@ class ProductFormActivity : AppCompatActivity() {
         ActivityProductFormBinding.inflate(layoutInflater)
     }
 
+    private val product by lazy {
+        intent?.getParcelableExtra<Product>(PRODUCT_KEY)
+    }
+
     private val viewModel: ProductFormViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,6 +42,15 @@ class ProductFormActivity : AppCompatActivity() {
         }
         binding.productFormImageSearch.setOnClickListener {
             searchImage(binding.productFormImageUrl.editText?.text.toString())
+        }
+
+        product?.let {
+            id = it.id
+            binding.productFormName.editText?.setText(it.name)
+            binding.productFormImageUrl.editText?.setText(it.imageUrl)
+            binding.productFormValue.editText?.setText(it.value.toString())
+            binding.productFormDescription.editText?.setText(it.description)
+            searchImage(it.imageUrl)
         }
     }
 
@@ -61,6 +74,7 @@ class ProductFormActivity : AppCompatActivity() {
         R.id.productFormSave -> {
             if (formIsValid()) {
                 viewModel.save(getProductFromForm())
+                setResult(RESULT_OK)
                 finish()
             }
             true
@@ -110,5 +124,10 @@ class ProductFormActivity : AppCompatActivity() {
             )
 
         return urlIsValid && nameIsValid && valueIsValid
+    }
+
+
+    companion object {
+        const val PRODUCT_KEY = "product"
     }
 }

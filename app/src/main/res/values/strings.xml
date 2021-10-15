@@ -22,5 +22,6 @@
     <string name="product_detail_value_title">Valor unitário</string>
     <string name="product_detail_value">R$ %1$.2f</string>
     <string name="product_detail_button_text">Adicionar no carrinho</string>
+    <string name="product_detail_menu_edit_text">Editar</string>
 
 </resources>

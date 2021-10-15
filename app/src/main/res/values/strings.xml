@@ -8,4 +8,6 @@
     <string name="product_form_name_hint">Nome</string>
     <string name="product_form_image_hint">Link da Imagem</string>
     <string name="product_form_search_image_button">Botão para buscar a imagem</string>
+    <string name="product_form_title">Formulário de Produtos</string>
+    <string name="main_activity_title">Listagem de Produtos</string>
 </resources>

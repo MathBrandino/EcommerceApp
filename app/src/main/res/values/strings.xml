@@ -1,7 +1,11 @@
 <resources>
     <string name="app_name">E-commerce</string>
+
     <string name="splash_screen_logo_description">Imagem com uma coruja simbolizando o logo do aplicativo</string>
+
+    <string name="main_activity_title">Listagem de Produtos</string>
     <string name="main_activity_fab_text">Novo Produto</string>
+
     <string name="product_form_image_description">Local onde a imagem irá ser exibida</string>
     <string name="product_form_description_hint">Descrição</string>
     <string name="product_form_value_hint">Valor</string>
@@ -9,5 +13,9 @@
     <string name="product_form_image_hint">Link da Imagem</string>
     <string name="product_form_search_image_button">Botão para buscar a imagem</string>
     <string name="product_form_title">Formulário de Produtos</string>
-    <string name="main_activity_title">Listagem de Produtos</string>
+    <string name="product_form_menu_save_text">salvar</string>
+    <string name="product_form_menu_url_error">Url não pode ser vazia</string>
+    <string name="product_form_menu_name_error">Nome não pode ser vazio</string>
+    <string name="product_form_menu_value_error">Valor não pode ser vazio</string>
+
 </resources>

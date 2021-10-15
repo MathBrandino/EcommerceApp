@@ -7,6 +7,7 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import coil.load
 import com.mathbrandino.e_commerce.R
@@ -26,6 +27,7 @@ class ProductDetailActivity : AppCompatActivity() {
         intent!!.getParcelableExtra<Product>(PRODUCT_EXTRA)!!
     }
 
+    private val viewModel: ProductDetailViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,6 +41,10 @@ class ProductDetailActivity : AppCompatActivity() {
             R.string.product_detail_value,
             product.value
         )
+
+        binding.productDetailButton.setOnClickListener {
+            viewModel.addIntoCart(product)
+        }
 
         resultLauncher =
             registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->

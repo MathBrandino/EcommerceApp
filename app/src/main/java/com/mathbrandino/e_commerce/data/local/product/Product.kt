@@ -13,5 +13,5 @@ data class Product(
     @ColumnInfo(name = "description") val description: String?,
     @ColumnInfo(name = "image_url") val imageUrl: String,
     @ColumnInfo(name = "value") val value: Double,
-    @ColumnInfo(name = "id") @PrimaryKey(autoGenerate = true) val id: Int = 0
+    @ColumnInfo(name = "id_product") @PrimaryKey(autoGenerate = true) val id: Int = 0
 ) : Parcelable

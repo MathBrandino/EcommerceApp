@@ -9,6 +9,10 @@ plugins {
 android {
     compileSdk 30
 
+    viewBinding {
+        enabled = true
+    }
+
     defaultConfig {
         applicationId "com.mathbrandino.e_commerce"
         minSdk 23

@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
@@ -38,12 +39,14 @@ class ProductDetailActivity : AppCompatActivity() {
         binding.productDetailImage.load(product.imageUrl)
         binding.productDetailDescriptionText.text = product.description
         binding.productDetailValueText.text = getString(
-            R.string.product_detail_value,
+            R.string.product_value,
             product.value
         )
 
         binding.productDetailButton.setOnClickListener {
             viewModel.addIntoCart(product)
+            Toast.makeText(this, R.string.product_detail_add_cart_success, Toast.LENGTH_SHORT)
+                .show()
         }
 
         resultLauncher =

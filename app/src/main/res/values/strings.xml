@@ -5,6 +5,7 @@
 
     <string name="main_activity_title">Listagem de Produtos</string>
     <string name="main_activity_fab_text">Novo Produto</string>
+    <string name="main_menu_cart_text">Carrinho</string>
 
     <string name="product_form_image_description">Local onde a imagem irá ser exibida</string>
     <string name="product_form_description_hint">Descrição</string>
@@ -20,8 +21,12 @@
 
     <string name="product_detail_description_title">Descrição do Produto</string>
     <string name="product_detail_value_title">Valor unitário</string>
-    <string name="product_detail_value">R$ %1$.2f</string>
     <string name="product_detail_button_text">Adicionar no carrinho</string>
     <string name="product_detail_menu_edit_text">Editar</string>
+    <string name="product_detail_add_cart_success">Produto adicionado ao Carrinho</string>
 
+    <string name="cart_title">Carrinho</string>
+    <string name="cart_total_text">Valor total: R$ %1$.2f</string>
+
+    <string name="product_value">R$ %1$.2f</string>
 </resources>

@@ -11,7 +11,7 @@
         android:layout_height="0dp"
         android:layout_margin="40dp"
         android:contentDescription="@string/splash_screen_logo_description"
-        android:src="@drawable/ic_owl"
+        android:src="@drawable/waiter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

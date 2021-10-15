@@ -7,12 +7,16 @@ import javax.inject.Singleton
 @Singleton
 class Cart @Inject constructor() {
 
-    val items = HashSet<CartItem>()
+    val items = ArrayList<CartItem>()
 
     fun getTotal() = items.sumOf { it.getTotal() }
 
     fun add(product: Product) {
-        items.add(CartItem(product, 1))
+        val item = items.find { it.product == product }
+        if (item == null)
+            items.add(CartItem(product, 1))
+        else
+            increaseQuantityOf(product)
     }
 
     fun increaseQuantityOf(product: Product) {
@@ -20,9 +24,13 @@ class Cart @Inject constructor() {
         item?.quantity = item?.quantity?.plus(1)!!
     }
 
-    fun decreaseQuantityOf(product: Product) {
+    fun decreaseQuantityOf(product: Product): Boolean {
         val item = items.find { it.product == product }
         item?.quantity = item?.quantity?.minus(1)!!
+        if (item.quantity == 0) {
+            return items.remove(items.find { it.product == product })
+        }
+        return false
     }
 
     fun clear() {

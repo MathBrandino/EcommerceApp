@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Ecommerce">
         <activity
-            android:name=".ui.SplashScreenActivity"
+            android:name=".ui.splash.SplashScreenActivity"
             android:exported="true"
             android:theme="@style/Theme.Ecommerce.SplashScree">
             <intent-filter>
@@ -22,10 +22,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.list.MainActivity"
             android:label="@string/main_activity_title" />
         <activity
-            android:name=".ui.ProductFormActivity"
+            android:name=".ui.form.ProductFormActivity"
             android:label="@string/product_form_title" />
     </application>
 

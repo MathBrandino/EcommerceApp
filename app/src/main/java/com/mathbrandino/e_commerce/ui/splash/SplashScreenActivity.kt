@@ -1,11 +1,11 @@
-package com.mathbrandino.e_commerce.ui
+package com.mathbrandino.e_commerce.ui.splash
 
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
-import com.mathbrandino.e_commerce.MainActivity
+import com.mathbrandino.e_commerce.ui.list.MainActivity
 import com.mathbrandino.e_commerce.R
 
 class SplashScreenActivity : AppCompatActivity(R.layout.activity_splash_screen) {

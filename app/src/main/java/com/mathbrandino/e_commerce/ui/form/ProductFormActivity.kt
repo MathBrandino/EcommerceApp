@@ -1,22 +1,29 @@
-package com.mathbrandino.e_commerce.ui
+package com.mathbrandino.e_commerce.ui.form
 
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import coil.load
 import coil.size.Scale
 import com.google.android.material.textfield.TextInputLayout
 import com.mathbrandino.e_commerce.R
+import com.mathbrandino.e_commerce.data.local.product.Product
 import com.mathbrandino.e_commerce.databinding.ActivityProductFormBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ProductFormActivity : AppCompatActivity() {
+
+    private var id = 0
 
     private val binding by lazy {
         ActivityProductFormBinding.inflate(layoutInflater)
     }
+
+    private val viewModel: ProductFormViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,11 +60,31 @@ class ProductFormActivity : AppCompatActivity() {
         }
         R.id.productFormSave -> {
             if (formIsValid()) {
-                Toast.makeText(this, "valido", Toast.LENGTH_LONG).show()
+                viewModel.save(getProductFromForm())
+                finish()
             }
             true
         }
         else -> true
+    }
+
+    private fun getProductFromForm(): Product {
+        fun extractStringFrom(til: TextInputLayout): String {
+            return til.editText?.text.toString()
+        }
+
+        val name = extractStringFrom(binding.productFormName)
+        val description = extractStringFrom(binding.productFormDescription)
+        val urlImage = extractStringFrom(binding.productFormImageUrl)
+        val value = extractStringFrom(binding.productFormValue).toDouble()
+
+        return Product(
+            name = name,
+            description = description,
+            imageUrl = urlImage,
+            value = value,
+            id = id
+        )
     }
 
     private fun formIsValid(): Boolean {

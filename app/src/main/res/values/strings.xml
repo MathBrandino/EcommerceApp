@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">E-commerce</string>
+    <string name="splash_screen_logo_description">Imagem com uma coruja simbolizando o logo do aplicativo</string>
 </resources>

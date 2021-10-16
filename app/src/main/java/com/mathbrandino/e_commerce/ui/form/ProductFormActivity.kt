@@ -120,7 +120,7 @@ class ProductFormActivity : AppCompatActivity() {
         val valueIsValid =
             validateTextInputLayout(
                 binding.productFormValue,
-                R.string.product_form_value_hint
+                R.string.product_form_menu_value_error
             )
 
         return urlIsValid && nameIsValid && valueIsValid

@@ -29,4 +29,7 @@
     <string name="cart_total_text">Valor total: R$ %1$.2f</string>
 
     <string name="product_value">R$ %1$.2f</string>
+    <string name="cart_menu_finish_text">Finalizar</string>
+    <string name="order_title">Pedidos</string>
+    <string name="main_menu_order_text">Pedidos</string>
 </resources>

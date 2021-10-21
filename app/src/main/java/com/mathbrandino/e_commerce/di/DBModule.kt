@@ -18,4 +18,10 @@ class DBModule {
 
     @Provides
     fun provideProductDao(database: EcommerceDatabase) = database.getProductDao()
+
+    @Provides
+    fun provideOrderDao(database: EcommerceDatabase) = database.getOrderDao()
+
+    @Provides
+    fun provideOrderItemDao(database: EcommerceDatabase) = database.getOrderItemDao()
 }

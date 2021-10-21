@@ -7,6 +7,6 @@ import androidx.room.Insert
 interface OrderItemDao {
 
     @Insert
-    suspend fun create(order: OrderItem)
+    suspend fun create(vararg order: OrderItem)
 
 }

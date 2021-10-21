@@ -15,6 +15,7 @@ import com.mathbrandino.e_commerce.databinding.ActivityMainBinding
 import com.mathbrandino.e_commerce.ui.cart.CartActivity
 import com.mathbrandino.e_commerce.ui.detail.ProductDetailActivity
 import com.mathbrandino.e_commerce.ui.form.ProductFormActivity
+import com.mathbrandino.e_commerce.ui.order.OrderActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -60,6 +61,9 @@ class MainActivity : AppCompatActivity() {
         when (item.itemId) {
             R.id.mainMenuCartItem -> {
                 startActivity(Intent(this, CartActivity::class.java))
+            }
+            R.id.mainMenuOrders -> {
+                startActivity(Intent(this, OrderActivity::class.java))
             }
         }
 

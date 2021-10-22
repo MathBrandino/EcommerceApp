@@ -6,6 +6,7 @@
     <string name="main_activity_title">Listagem de Produtos</string>
     <string name="main_activity_fab_text">Novo Produto</string>
     <string name="main_menu_cart_text">Carrinho</string>
+    <string name="main_menu_order_text">Pedidos</string>
 
     <string name="product_form_image_description">Local onde a imagem irá ser exibida</string>
     <string name="product_form_description_hint">Descrição</string>
@@ -30,6 +31,7 @@
 
     <string name="product_value">R$ %1$.2f</string>
     <string name="cart_menu_finish_text">Finalizar</string>
+
     <string name="order_title">Pedidos</string>
-    <string name="main_menu_order_text">Pedidos</string>
+    <string name="order_item_title">Pedido #%1$o</string>
 </resources>

@@ -30,21 +30,23 @@ class CartAdapter(
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(cartItem: CartItem) {
-            binding.itemCartImage.load(cartItem.product.imageUrl)
-            binding.itemCartName.text = cartItem.product.name
-            binding.itemCartQuantity.text = cartItem.quantity.toString()
-            binding.itemCartTotalPrice.text =
-                itemView.context.getString(R.string.product_value, cartItem.getTotal().toDouble())
+            with(binding){
+                itemCartImage.load(cartItem.product.imageUrl)
+                itemCartName.text = cartItem.product.name
+                itemCartQuantity.text = cartItem.quantity.toString()
+                itemCartTotalPrice.text =
+                    itemView.context.getString(R.string.product_value, cartItem.getTotal().toDouble())
 
-            binding.itemCartAdd.setOnClickListener {
-                add(cartItem)
-                notifyItemChanged(adapterPosition)
-            }
+                itemCartAdd.setOnClickListener {
+                    add(cartItem)
+                    notifyItemChanged(adapterPosition)
+                }
 
-            binding.itemCartMinus.setOnClickListener {
-                val removed = minus(cartItem)
-                if (removed) notifyItemRemoved(adapterPosition)
-                else notifyItemChanged(adapterPosition)
+                itemCartMinus.setOnClickListener {
+                    val removed = minus(cartItem)
+                    if (removed) notifyItemRemoved(adapterPosition)
+                    else notifyItemChanged(adapterPosition)
+                }
             }
         }
 

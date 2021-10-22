@@ -1,22 +1,25 @@
 package com.mathbrandino.e_commerce.ui.order
 
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import com.mathbrandino.e_commerce.databinding.ActivityOrderBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class OrderActivity : AppCompatActivity() {
 
-    private val viewModel : OrderViewModel by viewModels()
+    private val binding: ActivityOrderBinding by lazy {
+        ActivityOrderBinding.inflate(layoutInflater)
+    }
+    private val viewModel: OrderViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(binding.root)
 
         viewModel.orders.observe(this) {
-            Log.d("orders", "$it")
+            binding.root.adapter = OrderAdapter(it)
         }
     }
-
 }

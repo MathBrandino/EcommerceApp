@@ -18,7 +18,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import com.mathbrandino.e_commerce.R
 import com.mathbrandino.e_commerce.data.local.order.OrderWithItems
-import com.mathbrandino.e_commerce.databinding.ActivityOrderBinding
 import com.mathbrandino.e_commerce.ui.theme.EcommerceTheme
 import dagger.hilt.android.AndroidEntryPoint
 

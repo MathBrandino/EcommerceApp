@@ -57,7 +57,7 @@ class ProductDetailActivity : AppCompatActivity() {
             }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.product_detail_menu, menu)
         return super.onCreateOptionsMenu(menu)
     }

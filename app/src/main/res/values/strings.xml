@@ -34,4 +34,6 @@
 
     <string name="order_title">Pedidos</string>
     <string name="order_item_title">Pedido #%1$o</string>
+    <string name="order_value_title">Valor total: </string>
+    <string name="title_activity_bla">Bla</string>
 </resources>

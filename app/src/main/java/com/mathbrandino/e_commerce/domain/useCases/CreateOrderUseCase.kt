@@ -14,7 +14,7 @@ class CreateOrderUseCase @Inject constructor(
 
     suspend fun save(cart: Cart) {
 
-        val order = Order(0, cart.getTotal().toDouble())
+        val order = Order(0, cart.total.value.toDouble())
 
         val orderSavedId = orderDao.create(order)
 

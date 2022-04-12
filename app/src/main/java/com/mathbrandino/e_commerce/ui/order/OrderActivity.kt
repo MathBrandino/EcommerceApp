@@ -12,6 +12,7 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
@@ -43,7 +44,7 @@ class OrderActivity : ComponentActivity() {
 
 @Composable
 fun Screen(viewModel: OrderViewModel, onBackClick: () -> Unit) {
-    val orders: List<OrderWithItems> by viewModel.orders.observeAsState(listOf())
+    val orders: List<OrderWithItems> by viewModel.orders.collectAsState(listOf())
     Column {
         TopAppBar(
             title = { Text(text = stringResource(id = R.string.order_title)) },

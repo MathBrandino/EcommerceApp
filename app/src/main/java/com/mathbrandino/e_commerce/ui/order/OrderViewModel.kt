@@ -9,6 +9,6 @@ import javax.inject.Inject
 @HiltViewModel
 class OrderViewModel @Inject constructor(useCase: SearchOrderUseCase) : ViewModel() {
 
-    val orders = useCase.search().asLiveData()
+    val orders = useCase.search()
 
 }

@@ -1,26 +1,32 @@
 package com.mathbrandino.e_commerce.ui.cart
 
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Surface
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Done
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Modifier
 import androidx.lifecycle.lifecycleScope
 import com.mathbrandino.e_commerce.R
-import com.mathbrandino.e_commerce.databinding.ActivityCartBinding
 import com.mathbrandino.e_commerce.domain.model.Cart
 import com.mathbrandino.e_commerce.domain.useCases.CreateOrderUseCase
+import com.mathbrandino.e_commerce.ui.common.TopBar
+import com.mathbrandino.e_commerce.ui.theme.EcommerceTheme
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-import java.lang.Exception
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class CartActivity : AppCompatActivity() {
-
-    private val binding by lazy {
-        ActivityCartBinding.inflate(layoutInflater)
-    }
+class CartActivity : ComponentActivity() {
 
     @Inject
     lateinit var cart: Cart
@@ -30,55 +36,47 @@ class CartActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(binding.root)
-
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
-        updateCartTotal()
-
-        binding.cartItems.adapter = CartAdapter(
-            cart.items,
-            add = { cartItem ->
-                cart.increaseQuantityOf(cartItem.product)
-                updateCartTotal()
-            },
-            minus = { cartItem ->
-                val removed = cart.decreaseQuantityOf(cartItem.product)
-                updateCartTotal()
-                removed
-            })
-    }
-
-    private fun updateCartTotal() {
-        binding.cartValueText.text = getString(R.string.cart_total_text, cart.getTotal().toDouble())
-    }
-
-
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.cart_menu, menu)
-        return super.onCreateOptionsMenu(menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            android.R.id.home -> finish()
-            R.id.cartMenuFinish -> {
-                lifecycleScope.launch {
-                    try {
-                        createOrderUseCase.save(cart)
-                        finish()
-                        Toast.makeText(
-                            this@CartActivity,
-                            "Pedido fechado com sucesso",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    } catch (error: Exception) {
-                        Toast.makeText(this@CartActivity, error.message, Toast.LENGTH_SHORT).show()
-
+        setContent {
+            EcommerceTheme {
+                Surface(
+                    modifier = Modifier.fillMaxSize(),
+                    color = MaterialTheme.colors.background
+                ) {
+                    val total by remember { cart.total }
+                    Column {
+                        TopBar(
+                            onBackPressed = { finish() },
+                            title = R.string.cart_title,
+                            actions = {
+                                IconButton(onClick = {
+                                    lifecycleScope.launch {
+                                        createOrderUseCase.save(cart)
+                                        finish()
+                                        Toast.makeText(
+                                            this@CartActivity,
+                                            "Pedido fechado com sucesso",
+                                            Toast.LENGTH_SHORT
+                                        ).show()
+                                    }
+                                }) {
+                                    Icon(
+                                        Icons.Default.Done,
+                                        contentDescription = "fechar pedido"
+                                    )
+                                }
+                            })
+                        ItemsList(
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .weight(1F),
+                            cart.items,
+                            increase = { item -> cart.increaseQuantityOf(item.product) },
+                            decrease = { item -> cart.decreaseQuantityOf(item.product) }
+                        )
+                        CartTotal(total)
                     }
                 }
             }
         }
-        return super.onOptionsItemSelected(item)
     }
 }

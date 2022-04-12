@@ -19,6 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import com.mathbrandino.e_commerce.R
 import com.mathbrandino.e_commerce.data.local.order.OrderWithItems
+import com.mathbrandino.e_commerce.ui.common.TopBar
 import com.mathbrandino.e_commerce.ui.theme.EcommerceTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -46,14 +47,7 @@ class OrderActivity : ComponentActivity() {
 fun Screen(viewModel: OrderViewModel, onBackClick: () -> Unit) {
     val orders: List<OrderWithItems> by viewModel.orders.collectAsState(listOf())
     Column {
-        TopAppBar(
-            title = { Text(text = stringResource(id = R.string.order_title)) },
-            navigationIcon = {
-                IconButton(onClick = onBackClick) {
-                    Icon(Icons.Filled.ArrowBack, "back button")
-                }
-            },
-        )
+        TopBar(onBackPressed = onBackClick, title = R.string.order_title)
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize()

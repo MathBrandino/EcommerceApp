@@ -1,6 +1,5 @@
 package com.mathbrandino.e_commerce.ui.common
 
-import androidx.annotation.StringRes
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.Text
@@ -15,11 +14,11 @@ import com.mathbrandino.e_commerce.R
 @Composable
 fun TopBar(
     onBackPressed: () -> Unit,
-    @StringRes title: Int,
+    title: String,
     actions: @Composable (() -> Unit)? = null
 ) {
     TopAppBar(
-        title = { Text(text = stringResource(id = title)) },
+        title = { Text(text = title) },
         navigationIcon = {
             IconButton(onClick = onBackPressed) {
                 Icon(Icons.Filled.ArrowBack, "back button")
@@ -32,5 +31,5 @@ fun TopBar(
 @Preview(showBackground = true)
 @Composable
 fun TopBarPreview() {
-    TopBar(onBackPressed = { }, title = R.string.main_activity_title)
+    TopBar(onBackPressed = { }, title = stringResource(id = R.string.main_activity_title))
 }

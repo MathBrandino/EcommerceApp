@@ -44,9 +44,7 @@ class ProductDetailActivity : AppCompatActivity() {
         )
 
         binding.productDetailButton.setOnClickListener {
-            viewModel.addIntoCart(product)
-            Toast.makeText(this, R.string.product_detail_add_cart_success, Toast.LENGTH_SHORT)
-                .show()
+            addIntoCart()
         }
 
         resultLauncher =
@@ -55,6 +53,12 @@ class ProductDetailActivity : AppCompatActivity() {
                     finish()
                 }
             }
+    }
+
+    private fun addIntoCart() {
+        viewModel.addIntoCart(product)
+        Toast.makeText(this, R.string.product_detail_add_cart_success, Toast.LENGTH_SHORT)
+            .show()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -69,12 +73,16 @@ class ProductDetailActivity : AppCompatActivity() {
             true
         }
         R.id.productDetailEditMenu -> {
-            val intent = Intent(this, ProductFormActivity::class.java)
-            intent.putExtra(ProductFormActivity.PRODUCT_KEY, product)
-            resultLauncher.launch(intent)
+            goToForm()
             true
         }
         else -> true
+    }
+
+    private fun goToForm() {
+        val intent = Intent(this, ProductFormActivity::class.java)
+        intent.putExtra(ProductFormActivity.PRODUCT_KEY, product)
+        resultLauncher.launch(intent)
     }
 
     companion object {

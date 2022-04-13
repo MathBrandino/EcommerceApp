@@ -8,13 +8,11 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import com.mathbrandino.e_commerce.R
@@ -47,7 +45,7 @@ class OrderActivity : ComponentActivity() {
 fun Screen(viewModel: OrderViewModel, onBackClick: () -> Unit) {
     val orders: List<OrderWithItems> by viewModel.orders.collectAsState(listOf())
     Column {
-        TopBar(onBackPressed = onBackClick, title = R.string.order_title)
+        TopBar(onBackPressed = onBackClick, title = stringResource(id = R.string.order_title))
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize()

@@ -15,6 +15,7 @@ import androidx.compose.material.icons.filled.Done
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.lifecycleScope
 import com.mathbrandino.e_commerce.R
 import com.mathbrandino.e_commerce.domain.model.Cart
@@ -46,7 +47,7 @@ class CartActivity : ComponentActivity() {
                     Column {
                         TopBar(
                             onBackPressed = { finish() },
-                            title = R.string.cart_title,
+                            title = stringResource(id = R.string.cart_title),
                             actions = {
                                 IconButton(onClick = {
                                     lifecycleScope.launch {

@@ -27,7 +27,9 @@
             android:label="@string/main_activity_title" />
         <activity
             android:name=".ui.form.ProductFormActivity"
-            android:label="@string/product_form_title" />
+            android:label="@string/product_form_title"
+            android:windowSoftInputMode="adjustResize"
+            />
         <activity android:name=".ui.detail.ProductDetailActivity" />
         <activity
             android:name=".ui.cart.CartActivity"

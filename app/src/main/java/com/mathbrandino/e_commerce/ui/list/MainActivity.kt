@@ -60,14 +60,22 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.mainMenuCartItem -> {
-                startActivity(Intent(this, CartActivity::class.java))
+                goToCart()
             }
             R.id.mainMenuOrders -> {
-                startActivity(Intent(this, OrderActivity::class.java))
+                goToOrders()
             }
         }
 
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun goToOrders() {
+        startActivity(Intent(this, OrderActivity::class.java))
+    }
+
+    private fun goToCart() {
+        startActivity(Intent(this, CartActivity::class.java))
     }
 
     private fun clickListCallback(product: Product, view: View) {

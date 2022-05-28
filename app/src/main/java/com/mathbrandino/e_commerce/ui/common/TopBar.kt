@@ -13,7 +13,7 @@ import com.mathbrandino.e_commerce.R
 
 @Composable
 fun TopBar(
-    onBackPressed: () -> Unit,
+    onBackPressed: () -> Unit = {},
     title: String,
     actions: @Composable (() -> Unit)? = null
 ) {
@@ -24,6 +24,17 @@ fun TopBar(
                 Icon(Icons.Filled.ArrowBack, "back button")
             }
         },
+        actions = { actions?.let { it() } }
+    )
+}
+
+@Composable
+fun TopBarWithoutBack(
+    title: String,
+    actions: @Composable (() -> Unit)? = null
+) {
+    TopAppBar(
+        title = { Text(text = title) },
         actions = { actions?.let { it() } }
     )
 }

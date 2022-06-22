@@ -44,3 +44,9 @@ fun TopBarWithoutBack(
 fun TopBarPreview() {
     TopBar(onBackPressed = { }, title = stringResource(id = R.string.main_activity_title))
 }
+
+@Preview(showBackground = true)
+@Composable
+fun TopBarWithoutBackPreview() {
+    TopBarWithoutBack(title = stringResource(id = R.string.main_activity_title))
+}
